@@ -1,0 +1,32 @@
+<html>
+    <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+    <script>
+            var socket;
+
+    var random = function() {
+        console.log("random");
+        var rX = Math.floor((Math.random() * 180) + 1);
+        socket.emit("x", rX);
+    var rY = Math.floor((Math.random() * 180) + 1);
+    socket.emit("y", rY);
+
+};
+            document.addEventListener("DOMContentLoaded", function() {
+                console.log("ready");
+                socket = io("http://localhost:9000");
+                var i = 0;
+                while (i++ < 100) {
+                    console.log("a try");
+                    console.log(i);
+                    setTimeout(random, 2000);
+
+                        console.log("will loop");
+                }
+                window.setInterval(random, 2000);
+                    console.log("done");
+                /*socket.emit("x", 110);
+                socket.emit("y", 20);
+                socket.emit("lightOff");*/
+            });
+    </script>
+</html>
